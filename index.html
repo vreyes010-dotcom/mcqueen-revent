@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head> <!--Recuerda que head solo es visible para los desarrolladores web-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexander Mcqueen Calzado</title>
+  <meta name="description" content="Página de calzado Alxander Mcqueen.">
+  <meta name="keywords" content="tenis, sneakers, Alexander Mcqueen, moda, lujo">
+  <meta name="author" content="Valeria">
+  <meta name="copyright" content="©️ 2025 Alexander Mcqueen. Todos los derechos reservados.">
+  <meta name="application-name" content="Alexander Mcqueen Store">
+  <meta name="generator" content="VSCode">
+  <link rel="stylesheet" href="styles.css">
+  <!--Bootstrap CSS (CDN)-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- ================== NAVBAR ================== -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" aria-label="Navegación principal">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <span class="fw-semibold">Alexander Mcqueen Store</span>
+      </a>
+
+      <!-- Botón hamburguesa (móvil) -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+              aria-controls="mainNavbar" aria-expanded="false" aria-label="Alternar navegación">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links del navbar -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tablaProductos">Inventario</a></li>
+        </ul>
+
+        <!-- Botón modal -->
+        <button class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalAviso">
+          Aviso
+          <!-- Botón Carrito -->
+<button class="btn btn-dark btn-sm position-relative" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+  <i class="fas fa-shopping-cart"></i>
+  <span id="contadorCarrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    0
+  </span>
+</button>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <!-- ================ /NAVBAR ================== -->
+
+  <!-- Alerta -->
+  <div class="container mt-3">
+    <div class="alert alert-info" role="alert">
+      Explora la colección más reciente de <strong>Alexander Mcqueen</strong>.
+    </div>
+  </div>
+  
+  <!--Contenido principal-->
+  <main class="container my-4">
+    <div class="row g-4">
+
+      <!-- ============== CARRUSEL ==============
+         Chicos:
+         - Cada .carousel-item es una diapositiva (slide).
+         - Para AGREGAR un slide: dupliquen un bloque .carousel-item y sumen un indicador.
+         - Para ELIMINAR, borren el bloque y ajusten los indicadores (# de botones). -->
+    <div id="heroCarousel" class="carousel slide mb-4" data-bs-ride="carousel" aria-label="Promociones destacadas">
+      <!-- Indicadores (puntos de navegación) -->
+      <div class="carousel-indicators">
+        <!-- Chicos: si agregan una 4ª imagen, añadan otro botón con data-bs-slide-to="3" -->
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+
+      <div class="carousel-inner rounded-3 shadow-sm">
+        <!-- Slide 1 (activo por defecto) -->
+        <div class="carousel-item active">
+          <!-- Chicos: cambien la ruta a su imagen -->
+          <img src="alexander-mcqueen-white-Side-Logo-print-Detail-Sneakers.webp" class="d-block w-100" alt="Playeras oficiales en promoción"
+               style="height:380px; object-fit:cover;">
+          <div class="carousel-caption d-none d-md-block text-start">
+            <h5>MCQUEEN</h5>
+            <p>Nueva colección con tecnología.</p>
+            <a href="#catalogo" class="btn btn-primary btn-sm">Ver catálogo</a>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <img src="D_NQ_NP_815144-MLA50678712288_072022-W.jpg" class="d-block w-100" alt="Accesorios deportivos"
+               style="height:380px; object-fit:cover;">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>AMC</h5>
+            <p>Marca y lujo.</p>
+            <a href="#tablaProductos" class="btn btn-light btn-sm">Inventario</a>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <img src="D17395.001_3.jpg" class="d-block w-100" alt="Ofertas especiales"
+               style="height:380px; object-fit:cover;">
+          <div class="carousel-caption d-none d-md-block text-end">
+            <h5>Ofertas</h5>
+            <p>Ahorra en tu primer pedido.</p>
+            <!-- Chicos: este botón abre el modal “modalCupon” -->
+            <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalCupon">
+              Obtener cupón
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles prev/next del carrusel -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" aria-label="Anterior">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" aria-label="Siguiente">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+    <!-- ============ /CARRUSEL ============ -->
+
+      <!-- Columna principal-->
+      <div class="col-12 col-lg-8">
+        <!--Card del producto-->
+        <div class="card shadow-sm">
+          <div class="row g-0">
+            <div class="col-md-5">
+              <!--Imagen del producto-->
+              <img src="tenis-alexander-mcqueen-caballero-piel-blancos-talon-negro-D_NQ_NP_736340-MLM31434216859_072019-F.jpg" alt="Tenis Alexander Mcqueen" width="300">
+            </div>
+            <div class="col-md-7">
+              <div class="card-body">
+                <h2 class="card-title h4 mb-2">Alexnder Mcqueen Sneakers</h2>
+                <p class="card-text mb-1">Tenis de piel con detalles modernos e icónicos de la marca britanica.</p>
+                <p class="card-text fs-5 fw-semibold text-success">Precio: $17,500 MXN</p>
+
+                <!--Enlace a la tienda en línea-->
+                <a href="https://www.alexandermcqueen.com/en-mx" 
+                   target="_blank" 
+                   class="btn btn-primary btn-sm">
+                  Comprar ahora
+                </a>
+
+                <hr class="my-4" />
+                <!--Características-->
+                <h3 class="h5">Características</h3>
+                <ul class="mb-0">
+                  <li>Material: piel de becerro premium</li>
+                  <li>Detalles metálicos en dorado</li>
+                  <li>Suela de goma ligera y cómoda</li>
+                  <li>Colores disponibles: blanco, negro, azul, rojo</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        ★★★★☆ — “Muy cómodo y fresco.” — Cliente verificado
+          </div>
+        </div>
+        
+<!--==========/NAV AND TABS=============---->
+      </div><!-- cierra card-body -->
+      </div> <!-- cierra col-md-7 -->
+    </div> <!-- cierra .row g-0 -->
+    </div> <!-- cierra .card -->
+  </div> <!-- cierra .col-12 col-lg-8 -->
+
+        <!-- Tabla -->
+        <section class="mt-4" id="tablaProductos">
+          <h3 class="h5 mb-3"> Tabla de productos </h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle">
+              <thead class="table-dark">
+                <tr>
+                  <th>Modelo</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>Classic Oversized</td>
+                <td>$17,500</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>Court Edition</td>
+                <td>$18,200</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>Larry Edition</td>
+                <td>$19,000</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td>Low-tops</td>
+                <td>$16,800</td>
+                <td>7</td>
+              </tr>
+              </tbody>
+              <tfoot>
+              <tr class="fw-bold">
+                <td colspan="2"> Total de productos</td>
+                <td>27</td>
+              </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+      </div>
+
+      <!-- SELECCIÓN COLAPSABLE  -->
+        <!--== data-bs-toggle "collapse activa en el efecto" =-->
+        <section class="my-5">
+          <h3 class="h5 mb-3">Más información:</h3>
+          </p>
+          <div class="collapse" id="infoExtra">
+            <div class="card card-body">
+              <strong> colapsable </strong>
+              </div>
+            </div>
+            </section>
+        <!-- SECCIÓN COLAPSABLE  -->
+
+          <!--== data-bs-toggle "collapse activa en el efecto" =-->
+
+        <section class="my-5">
+          <h3 class="h5 mb-3">Más información:</h3>
+          </p>
+          <button class="btn btn-outline-info btn" type="button" data-bs-toggle="collapse" data-bs-target="#infoExtra"
+          aria-controls="infoExtra" aria-expanded="false">
+        </button>
+        Mostrar más detalles
+        </button>
+      </p>
+      <div class="collapse" id="InfoExtra">
+        <div class="card card-body">
+        </div>
+        <strong> Si quieres comprar los mejores tenis del todo el mundo haz click. </strong>
+      </div>
+  </div>
+  </section>
+
+        <!-- SECCIÓN ACORDEÓN, NOS SIRVE PARA AGRUPAR SECCIONES -->
+         <section class="my-5">
+        <h3 class="h5 mb-3">Preguntas frecuentes:</h3>
+        <div class="accordion" id="miAcordeon">
+
+         <!-- Pregunta 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="encabezadoUno">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelUno" aria-expanded="true" aria-controls="panelUno">
+              ¿Cuanto tarda el envío?
+              </button>
+              </h2>
+              <div id="panelUno" class="accordion-collapse collapse show"
+              aria-labelledby="encabezadoUno" data-bs-parent="#miAcordeon">
+              <div class="accrdion-body">
+                  Los envios tardan entre 2 y 5 días hábile, dependiendo de tu ubicación. 
+                  </div>
+                </div>
+              </div>
+
+           <!-- Pregunta 2 -->
+           <div class="accordion-item">
+            <h2 class="accordion-header" id="encabezadoDos">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelDos" aria-expanded="false" aria-controls="panelDos">
+              Si no me gusta ¿Puedo devolver el producto?
+              </button>
+              </h2>
+              <div id="panelDos" class="accordion-collapse collapse"
+              aria-labelledby="encabezadoDos" data-bs-parent="#miAcordeon">
+              <div class="accrdion-body">
+                  Si, tienes 7 días para devolver el producto y obtener un reembolso completo.
+                  </div>
+                </div>
+              </div>
+
+             <!-- Pregunta 3 -->
+           <div class="accordion-item">
+            <h2 class="accordion-header" id="encabezadoTres">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+              data-bs-target="#panelTres" aria-expanded="false" aria-controls="panelTres">
+              ¿Cual es el metodo de pago?
+              </button>
+              </h2>
+              <div id="panelTres" class="accordion-collapse collapse"
+              aria-labelledby="encabezadoTres" data-bs-parent="#miAcordeon">
+              <div class="accrdion-body">
+                  Visa, transferencia y paypal
+                  </div>
+                </div>
+              </div>
+            </div>
+         </section>
+
+         <!-- ================== NUEVA SECCIÓN: HACER PEDIDO ==================
+     Chicos: estructura del formulario usando componentes Bootstrap.
+     OJO: Sin JS por ahora; solo maqueta HTML accesible. -->
+<section id="pedido" class="my-5">
+  <h3 class="h5 mb-3">Hacer pedido</h3>
+
+  <!-- Chicos: Nav Pills para simular pasos del formulario -->
+  <ul class="nav nav-pills mb-3" id="pillsPedido" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-producto-tab" data-bs-toggle="pill" data-bs-target="#pills-producto"
+              type="button" role="tab" aria-controls="pills-producto" aria-selected="true">
+        1) Producto
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-personaliza-tab" data-bs-toggle="pill" data-bs-target="#pills-personaliza"
+              type="button" role="tab" aria-controls="pills-personaliza" aria-selected="false">
+        2) Personaliza
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-notas-tab" data-bs-toggle="pill" data-bs-target="#pills-notas"
+              type="button" role="tab" aria-controls="pills-notas" aria-selected="false">
+        3) Envío/Notas
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="pillsPedidoContent">
+    <!-- Paso 1: Producto -->
+    <div class="tab-pane fade show active" id="pills-producto" role="tabpanel" aria-labelledby="pills-producto-tab" tabindex="0">
+      <form aria-label="Formulario de pedido (sin lógica por ahora)">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="selModelo" class="form-label">Modelo</label>
+            <select id="selModelo" class="form-select">
+              <option value="" selected disabled>Elige un modelo</option>
+              <option>Local 25/26</option>
+              <option>Visita 25/26</option>
+              <option>Entrenamiento</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="selTalla" class="form-label">Talla</label>
+            <select id="selTalla" class="form-select">
+              <option value="" selected disabled>Elige</option>
+              <option>25</option><option>26</option><option>27</option><option>28</option>
+            </select>
+          </div>
+
+          <div class="col-md-3">
+            <label for="selColor" class="form-label">Color</label>
+            <select id="selColor" class="form-select">
+              <option value="" selected disabled>Elige</option>
+              <option>Azul/Negro</option><option>Blanco/Negro</option>
+            </select>
+          </div>
+
+          <div class="col-md-4">
+            <label for="inpCantidad" class="form-label">Cantidad</label>
+            <input id="inpCantidad" type="number" min="1" value="1" class="form-control">
+          </div>
+
+          <div class="col-12">
+            <label for="nombreCliente" class="form-label">Tu nombre</label>
+            <input type="text" id="nombreCliente" class="form-control" placeholder="Escribe tu nombre">
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Paso 2: Personaliza -->
+    <div class="tab-pane fade" id="pills-personaliza" role="tabpanel" aria-labelledby="pills-personaliza-tab" tabindex="0">
+      <p class="mb-2">Opciones de personalización (maqueta):</p>
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="chkNombreNumero">
+            <label class="form-check-label" for="chkNombreNumero">Nombre y número</label>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="chkParcheLiga">
+            <label class="form-check-label" for="chkParcheLiga">Parche de liga</label>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label for="inpNombre" class="form-label">Nombre (opcional)</label>
+          <input id="inpNombre" type="text" class="form-control" placeholder="Ej: Vale Albiter">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="inpNumero" class="form-label">Número (opcional)</label>
+          <input id="inpNumero" type="number" min="0" max="99" class="form-control" placeholder="10">
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 3: Envío / Notas -->
+    <div class="tab-pane fade" id="pills-notas" role="tabpanel" aria-labelledby="pills-notas-tab" tabindex="0">
+      <div class="mb-3">
+        <label for="txtInstrucciones" class="form-label">Instrucciones específicas</label>
+        <textarea id="txtInstrucciones" class="form-control" rows="3" placeholder="Ej: empaquetar para regalo"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="selEnvio" class="form-label">Envío</label>
+        <select id="selEnvio" class="form-select">
+          <option>Recoger en tienda</option>
+          <option>Envío estándar</option>
+          <option>Envío express</option>
+        </select>
+      </div>
+
+      <!-- Chicos: botones de maqueta, no hacen nada por ahora -->
+      <div class="d-flex gap-2">
+        <button type="button" class="btn btn-success">Generar pedido (maqueta)</button>
+        <button type="reset" class="btn btn-outline-secondary">Limpiar</button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================== /HACER PEDIDO ================== -->
+
+
+      <!-- Columna lateral -->
+      <!--<aside class="col-12 col-lg-4">
+        <div class="card mb-3">
+          <div class="card-header">Botones (Bootstrap)</div>
+          <div class="card-body d-flex flex-wrap gap-2">
+            <button class="btn btn-primary btn-sm">Comprar</button>
+            <button class="btn btn-secondary btn-sm">Ver más</button>
+            <button class="btn btn-success btn-sm">Nuevo</button>
+            <button class="btn btn-danger btn-sm">Agotado</button>
+            <button class="btn btn-warning btn-sm">Oferta</button>
+          </div>
+        </div>-->
+
+        <div class="card mb-3">
+          <div class="card-header">Card básica</div>
+          <div class="card-body">
+            <h5 class="card-title">Edición Limitada</h5>
+            <p class="card-text">Descubre los sneakers exclusivos que marcan tendencia en el mundo del lujo.</p>
+            <a href="https://www.alexandermcqueen.com/en-mx" target="_blank" class="btn btn-primary btn-sm">Explorar</a>
+          </div>
+        </div>
+
+        <div class="card mb-3" style="width: 100%;">
+          <img src="13452642_37541717_1000.webp" class="card-img-top" alt="Imagen promocional">
+          <div class="card-body">
+            <h5 class="card-title">Colección FW25</h5>
+            <p class="card-text">Sneakers de la colección otoño-invierno 2025.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!--Bootstrap JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+<script>
+let carrito = [];
+const contadorCarrito = document.getElementById("contadorCarrito");
+const tablaCarrito = document.querySelector("#tablaCarrito tbody");
+const totalCarrito = document.getElementById("totalCarrito");
+
+// Agregar producto
+function agregarAlCarrito(nombre, precio) {
+  const productoExistente = carrito.find(p => p.nombre === nombre);
+  if (productoExistente) {
+    productoExistente.cantidad++;
+  } else {
+    carrito.push({ nombre, precio, cantidad: 1 });
+  }
+  actualizarCarrito();
+}
+
+// Actualizar tabla y contador
+function actualizarCarrito() {
+  tablaCarrito.innerHTML = "";
+  let total = 0;
+  carrito.forEach((p, i) => {
+    const subtotal = p.precio * p.cantidad;
+    total += subtotal;
+    tablaCarrito.innerHTML += `
+      <tr>
+        <td>${p.nombre}</td>
+        <td>$${p.precio.toLocaleString('es-MX')}</td>
+        <td>${p.cantidad}</td>
+        <td>$${subtotal.toLocaleString('es-MX')}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" onclick="eliminarProducto(${i})">🗑️</button>
+        </td>
+      </tr>`;
+  });
+  totalCarrito.textContent = `$${total.toLocaleString('es-MX')} MXN`;
+  contadorCarrito.textContent = carrito.length;
+}
+
+// Eliminar producto del carrito
+function eliminarProducto(index) {
+  carrito.splice(index, 1);
+  actualizarCarrito();
+}
+
+// Finalizar compra
+document.getElementById("btnPagar").addEventListener("click", () => {
+  if (carrito.length === 0) {
+    alert("Tu carrito está vacío 🛍️");
+    return;
+  }
+  alert("¡Gracias por tu compra en Alexander McQueen Store! 💎");
+  carrito = [];
+  actualizarCarrito();
+});
+</script>
+</html>
+<!-- ================== MODALES ================== -->
+<!-- Modal Aviso -->
+<div class="modal fade" id="modalAviso" tabindex="-1" aria-labelledby="modalAvisoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalAvisoLabel">Aviso importante</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">Envíos gratis a todo México en compras mayores a $1,499 🎉</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+        <a href="#catalogo" class="btn btn-primary btn-sm">Ver productos</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Cupón -->
+<div class="modal fade" id="modalCupon" tabindex="-1" aria-labelledby="modalCuponLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalCuponLabel">Cupón de bienvenida</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">Usa el código <strong>NALA12</strong> y obtén 10% de descuento en tu primera compra.</div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-success btn-sm" data-bs-dismiss="modal">¡Listo!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Detalles -->
+<div class="modal fade" id="modalDetalles" tabindex="-1" aria-labelledby="modalDetallesLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalDetallesLabel">Detalles: Tenis Alexander Mcqueen 25/26</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row g-3">
+          <div class="col-md-5">
+            <img src="16775636_34774404_1000.webp" alt="Tenis Alexander Mcqueen 25/26" class="img-fluid rounded">
+          </div>
+          <div class="col-md-7">
+            <p class="mb-2">suela de goma, piel de becerro, costuras reforzadas.</p>
+            <ul class="mb-3">
+              <li>Material: 100% piel de becerro</li>
+              <li>Tecnología: HEAT.RDY</li>
+              <li>Tallas: 23, 24, 25, 26, 27, 28 ,29</li>
+              <li>Envío: 2-5 días hábiles</li>
+            </ul>
+            <div class="d-flex align-items-center gap-2">
+              <span class="fs-5 fw-bold text-success">$2,199</span>
+              <a href="https://www.alexandermcqueen.com/en-mx" target="_blank" rel="noopener"
+                 class="btn btn-primary btn-sm">Comprar ahora</a>
+              <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p class="small text-muted mb-0">* Imágenes de referencia. Precio sujeto a cambios sin previo aviso.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ================ /MODALES ================ -->
+<!-- ===== Modal Carrito ===== -->
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-white">
+        <h5 class="modal-title" id="modalCarritoLabel">🛍️ Tu carrito de compras</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table align-middle text-center" id="tablaCarrito">
+          <thead class="table-dark">
+            <tr>
+              <th>Producto</th>
+              <th>Precio</th>
+              <th>Cantidad</th>
+              <th>Subtotal</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se insertan los productos dinámicamente -->
+          </tbody>
+        </table>
+        <hr>
+        <h5 class="text-end fw-bold">Total: <span id="totalCarrito">$0.00 MXN</span></h5>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Seguir comprando</button>
+        <button class="btn btn-success btn-sm" id="btnPagar">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Testimonios -->
+<section id="testimonios" class="container my-5">
+  <h3 class="h5 mb-3">Testimonios</h3>
+  <div class="row g-3">
+    <div class="col-md-6">
+      <div class="p-3 border rounded testimonio testimonio-vip">
+        <h4 class="h6 mb-1">Valeria Albiter</h4>
+        <p class="mb-0">Me encantó el nuevo diseño y su calidad</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-3 border rounded testimonio">
+        <h4 class="h6 mb-1">Jose Alberto</h4>
+        <p class="mb-0">Muy buena calidad</p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-3 border rounded testimonio testimonio-vip">
+        <h4 class="h6 mb-1">Ximena Bastida</h4>
+        <p class="mb-0">Todo en perfectas condiciones</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARIO DE CONTACTO -->
+<section id="contacto" class="container my-5">
+  <h3 class="h5 mb-3">Contacto</h3>
+  <form id="formContacto" class="row g-3" aria-label="Formulario de contacto">
+    <div class="col-md-6">
+      <label for="cNombre" class="form-label">Nombre</label>
+      <input type="text" id="cNombre" name="nombre" class="form-control" placeholder="Tu nombre">
+    </div>
+
+    <div class="col-md-6">
+      <label for="cEmail" class="form-label">Email</label>
+      <input type="email" id="cEmail" class="form-control" placeholder="tucorreo@ejemplo.com">
+    </div>
+
+    <div class="col-md-6">
+      <label for="cEmail2" class="form-label">Confirmar Email</label>
+      <input type="email" id="cEmail2" class="form-control" placeholder="tucorreo@ejemplo.com">
+    </div>
+
+    <div class="col-12">
+      <label for="cMsg" class="form-label">Mensaje</label>
+      <textarea id="cMsg" class="form-control" rows="3" placeholder="¿En qué te podemos ayudar?"></textarea>
+    </div>
+
+    <div class="col-12 d-flex gap-2">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="reset" class="btn btn-outline-secondary">Limpiar</button> 
+    </div>
+  </form>
+</section>
+
+
+
+<!-- ========================= FOOTER ========================= -->
+<footer class="bg-dark text-center text-white py-3 mt-5">
+  ©️ 2025 Alexander Mcqueen | Proyecto académico
+  <div class="mt-2">
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/share/17VNV9QWkc/?mibextid=wwXIfr" target="_blank" rel="noopener"
+       class="text-white me-3" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/vale_albiter?igsh=OGF4dnlmc3phdGZ1&utm_source=qr" target="_blank" rel="noopener"
+       class="text-white me-3" aria-label="Instagram">
+      <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
+    </a>
+    <!-- TikTok -->
+    <a href="www.tiktok.com/@vale_albiter" target="_blank" rel="noopener"
+       class="text-white me-3" aria-label="TikTok">
+      <i class="fab fa-tiktok fa-lg" aria-hidden="true"></i>
+    </a>
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@valereyes6772" target="_blank" rel="noopener"
+       class="text-white me-3" aria-label="YouTube">
+      <i class="fab fa-youtube fa-lg" aria-hidden="true"></i>
+    </a>
+    <!-- X / Twitter -->
+    <a href="https://x.com/vale_albiter?s=21&t=06ppPjb8iRQXFErQul8DkA" target="_blank" rel="noopener"
+       class="text-white" aria-label="X">
+      <i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
+        crossorigin="anonymous"></script>
+<!-- Enlace JS -->
+ <button class="btn btn-success btn-sm mt-2" onclick="agregarAlCarrito('Sneakers Alexander McQueen', 17500)">
+  Agregar al carrito
+</button>
+<script src="app.js"></script>
+<!-- ====== BOTONES FLOTANTES DE REDES ====== -->
+<div class="social-float">
+  <!-- WhatsApp -->
+  <a href="https://wa.me/5217221234567" target="_blank" class="btn-social btn-whatsapp" aria-label="Chat en WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/vale_albiter?igsh=OGF4dnlmc3phdGZ1&utm_source=qr" target="_blank" class="btn-social btn-instagram" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- TikTok -->
+  <a href="https://www.tiktok.com/@vale_albiter" target="_blank" class="btn-social btn-tiktok" aria-label="TikTok">
+    <i class="fab fa-tiktok"></i>
+  </a>
+</div>
+
+<!-- Font Awesome (para los íconos) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script
+
+</body>
+</html>
+<!-- ===== Botón flotante de WhatsApp ===== -->
+  <a href="#" class="whatsapp-float" target="_blank" aria-label="Chatea por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <!-- ===== Fin del botón ===== -->
+   <!-- ===== Ícono flotante del carrito ===== -->
+<a href="#" class="cart-float" id="cartBtn" aria-label="Ver carrito">
+  <i class="fas fa-shopping-cart"></i>
+  <span class="cart-count" id="cartCount">0</span>
+</a>
